@@ -17,9 +17,12 @@
     h5,
     h6 {
         font-family: "Poppins", sans-serif;
+        color: #4b5b68;
     }
-    p {
+    p,
+    div {
         font-family: "Roboto", sans-serif;
+        color: #677d8f;
     }
 }
 /* 

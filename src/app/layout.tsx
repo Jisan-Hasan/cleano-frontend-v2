@@ -1,9 +1,23 @@
-const UserLayout = ({ children }: { children: React.ReactNode }) => {
-    return (
-        <div>
-            <div>{children}</div>
-        </div>
-    );
+import type { Metadata } from "next";
+import { Toaster } from "react-hot-toast";
+import "./globals.css";
+
+export const metadata: Metadata = {
+    title: "Cleano",
+    description: "Cleaning Service Provider",
 };
 
-export default UserLayout;
+export default function RootLayout({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
+    return (
+        <html lang="en">
+            <body>
+                <Toaster />
+                {children}
+            </body>
+        </html>
+    );
+}
