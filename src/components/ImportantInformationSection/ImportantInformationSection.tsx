@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ChooseUsComponent from "./ChooseUs";
 import OurApproachComponent from "./OurApproach";
 import QuestionAnswerComponent from "./QuestionAnswer";
 
@@ -13,6 +14,8 @@ const ImportantInformationSection = () => {
         content = <OurApproachComponent />;
     } else if (section == 2) {
         content = <QuestionAnswerComponent />;
+    } else if (section == 3) {
+        content = <ChooseUsComponent />;
     }
 
     return (

@@ -29,7 +29,7 @@ const OurApproachComponent = () => {
             <div className="flex justify-between">
                 <div className="flex gap-4 max-w-sm group">
                     <div>
-                        <div className="p-5 rounded-full shadow-2xl group-hover:bg-[#52B765] transition-all duration-500">
+                        <div className="p-5 rounded-full shadow-2xl bg-[#F0F4F8] group-hover:bg-[#52B765] transition-all duration-500">
                             <SlTrophy className="text-[#52B765] group-hover:text-white transition-all duration-500" size={35} />
                         </div>
                     </div>
@@ -49,7 +49,7 @@ const OurApproachComponent = () => {
 
                 <div className="flex gap-4 max-w-sm group">
                     <div>
-                        <div className="p-5 rounded-full shadow-2xl group-hover:bg-[#52B765] transition-all duration-500">
+                        <div className="p-5 rounded-full shadow-2xl bg-[#F0F4F8] group-hover:bg-[#52B765] transition-all duration-500">
                             <PiShirtFolded className="text-[#52B765] group-hover:text-white transition-all duration-500" size={35} />
                         </div>
                     </div>
@@ -69,7 +69,7 @@ const OurApproachComponent = () => {
 
                 <div className="flex gap-4 max-w-sm group">
                     <div>
-                        <div className="p-5 rounded-full shadow-2xl group-hover:bg-[#52B765] transition-all duration-500">
+                        <div className="p-5 rounded-full shadow-2xl bg-[#F0F4F8] group-hover:bg-[#52B765] transition-all duration-500">
                             <SlTrophy className="text-[#52B765] group-hover:text-white transition-all duration-500" size={35} />
                         </div>
                     </div>
