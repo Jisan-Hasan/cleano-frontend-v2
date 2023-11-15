@@ -39,11 +39,12 @@ const ReasonComponent = () => {
                         </div>
                         <div className="space-y-4">
                             <h3 className="font-semibold text-xl leading-8">
-                                Top-Rated Company
+                                Superior Quality
                             </h3>
                             <p>
-                                We hold a successful track record of satisfying
-                                our customers and getting back their bond money.
+                                We use the most excellent quality tools and
+                                equipment to get all the dust and dirt out of
+                                your premises.
                             </p>
                         </div>
                     </div>
@@ -53,11 +54,11 @@ const ReasonComponent = () => {
                         </div>
                         <div className="space-y-4">
                             <h3 className="font-semibold text-xl leading-8">
-                                Top-Rated Company
+                                Eco-Friendly Products
                             </h3>
                             <p>
-                                We hold a successful track record of satisfying
-                                our customers and getting back their bond money.
+                                We use biodegradable products which do not harm
+                                the environment, pets or humans in any way.
                             </p>
                         </div>
                     </div>

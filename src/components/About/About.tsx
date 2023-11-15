@@ -203,7 +203,7 @@ const About = () => {
                                     section === 1
                                         ? "text-[#4ba0e8]"
                                         : "text-[#4B5B68]"
-                                } hover:text-[#4ba0e8] cursor-pointer`}
+                                } hover:text-[#4ba0e8] cursor-pointer transition-all duration-700`}
                                 onClick={() => setSection(1)}
                             >
                                 We Provide
@@ -214,7 +214,7 @@ const About = () => {
                                     section === 2
                                         ? "text-[#4ba0e8]"
                                         : "text-[#4B5B68]"
-                                } hover:text-[#4ba0e8] cursor-pointer`}
+                                } hover:text-[#4ba0e8] cursor-pointer transition-all duration-700`}
                                 onClick={() => setSection(2)}
                             >
                                 How it Works
@@ -225,7 +225,7 @@ const About = () => {
                                     section === 3
                                         ? "text-[#4ba0e8]"
                                         : "text-[#4B5B68]"
-                                } hover:text-[#4ba0e8] cursor-pointer`}
+                                } hover:text-[#4ba0e8] cursor-pointer transition-all duration-700`}
                                 onClick={() => setSection(3)}
                             >
                                 With Us
