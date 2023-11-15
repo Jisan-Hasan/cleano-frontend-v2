@@ -6,7 +6,7 @@ import { SlTrophy } from "react-icons/sl";
 
 const ChooseUsComponent = () => {
     return (
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-3 gap-6 my-14">
             <div className="space-y-6">
                 <div className="space-y-4">
                     <h2 className="text-4xl font-semibold">Why Choose Us</h2>
