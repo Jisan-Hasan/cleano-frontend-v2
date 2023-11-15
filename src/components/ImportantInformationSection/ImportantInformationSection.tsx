@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import OurApproachComponent from "./OurApproach";
+import QuestionAnswerComponent from "./QuestionAnswer";
 
 const ImportantInformationSection = () => {
     const [section, setSection] = useState<1 | 2 | 3>(1);
@@ -10,6 +11,8 @@ const ImportantInformationSection = () => {
 
     if (section == 1) {
         content = <OurApproachComponent />;
+    } else if (section == 2) {
+        content = <QuestionAnswerComponent />;
     }
 
     return (
