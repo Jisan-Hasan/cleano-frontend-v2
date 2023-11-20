@@ -6,7 +6,7 @@ import questionAnswerImage from "../../assets/images/question-answer.jpg";
 
 const QuestionAnswerComponent = () => {
     return (
-        <div className="grid grid-cols-12">
+        <div className="lg:grid grid-cols-12 space-y-5 lg:space-y-0">
             <div className="col-span-5">
                 <Image src={questionAnswerImage} alt="" />
             </div>

@@ -6,7 +6,7 @@ import { SlTrophy } from "react-icons/sl";
 
 const ChooseUsComponent = () => {
     return (
-        <div className="grid grid-cols-3 gap-6 my-14">
+        <div className="lg:grid grid-cols-3 gap-6 my-14 space-y-7 lg:space-y-0">
             <div className="space-y-6">
                 <div className="space-y-4">
                     <h2 className="text-4xl font-semibold">Why Choose Us</h2>
@@ -32,7 +32,7 @@ const ChooseUsComponent = () => {
                 </div>
             </div>
             <div className="col-span-2">
-                <div className="grid grid-cols-2 gap-6">
+                <div className="lg:grid grid-cols-2 gap-6 space-y-4 lg:space-y-0">
                     <div className="flex gap-4 group">
                         <div>
                             <div className="p-5 rounded-full shadow-2xl bg-[#F0F4F8]  group-hover:bg-[#52B765] transition-all duration-500">

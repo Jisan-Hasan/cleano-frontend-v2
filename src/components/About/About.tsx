@@ -85,7 +85,7 @@ const About = () => {
                         <div className="space-y-3">
                             <h5 className="text-[#4b5b68] leading-6 font-semibold">
                                 Book online in{" "}
-                                <span className="text-[#4ba0e8]">
+                                <span className="text-[#51B765]">
                                     60 seconds
                                 </span>
                             </h5>
@@ -97,7 +97,7 @@ const About = () => {
                         <div className="space-y-3">
                             <h5 className="text-[#4b5b68] leading-6 font-semibold">
                                 Get a{" "}
-                                <span className="text-[#4ba0e8]">
+                                <span className="text-[#51B765]">
                                     5 star cleaner
                                 </span>
                             </h5>
@@ -109,7 +109,7 @@ const About = () => {
                         <div className="space-y-3">
                             <h5 className="text-[#4b5b68] leading-6 font-semibold">
                                 Manage everything{" "}
-                                <span className="text-[#4ba0e8]">online</span>
+                                <span className="text-[#51B765]">online</span>
                             </h5>
                             <p className="text-[#677d8f] leading-7">
                                 Add visits, skip visits, leave notes, and book
@@ -201,9 +201,9 @@ const About = () => {
                             <h4
                                 className={`${
                                     section === 1
-                                        ? "text-[#4ba0e8]"
+                                        ? "text-[#51B765]"
                                         : "text-[#4B5B68]"
-                                } hover:text-[#4ba0e8] cursor-pointer transition-all duration-700`}
+                                } hover:text-[#51B765] cursor-pointer transition-all duration-700`}
                                 onClick={() => setSection(1)}
                             >
                                 We Provide
@@ -212,9 +212,9 @@ const About = () => {
                             <h4
                                 className={`${
                                     section === 2
-                                        ? "text-[#4ba0e8]"
+                                        ? "text-[#51B765]"
                                         : "text-[#4B5B68]"
-                                } hover:text-[#4ba0e8] cursor-pointer transition-all duration-700`}
+                                } hover:text-[#51B765] cursor-pointer transition-all duration-700`}
                                 onClick={() => setSection(2)}
                             >
                                 How it Works
@@ -223,9 +223,9 @@ const About = () => {
                             <h4
                                 className={`${
                                     section === 3
-                                        ? "text-[#4ba0e8]"
+                                        ? "text-[#51B765]"
                                         : "text-[#4B5B68]"
-                                } hover:text-[#4ba0e8] cursor-pointer transition-all duration-700`}
+                                } hover:text-[#51B765] cursor-pointer transition-all duration-700`}
                                 onClick={() => setSection(3)}
                             >
                                 With Us

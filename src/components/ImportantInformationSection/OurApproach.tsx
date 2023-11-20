@@ -6,7 +6,7 @@ import ourApproachImage from "../../assets/images/our-approach.jpg";
 const OurApproachComponent = () => {
     return (
         <div className="space-y-16">
-            <div className="flex justify-between">
+            <div className="lg:flex justify-between space-y-5 lg:space-y-0">
                 <div className="space-y-7 max-w-[480px] mt-5">
                     <h3 className="text-3xl font-semibold">Our Approach</h3>
                     <p className="leading-7">
@@ -26,11 +26,14 @@ const OurApproachComponent = () => {
                     <Image src={ourApproachImage} alt="Our Approach Image" />
                 </div>
             </div>
-            <div className="flex justify-between">
+            <div className="lg:flex justify-between space-y-7 lg:space-y-0">
                 <div className="flex gap-4 max-w-sm group">
                     <div>
                         <div className="p-5 rounded-full shadow-2xl bg-[#F0F4F8] group-hover:bg-[#52B765] transition-all duration-500">
-                            <SlTrophy className="text-[#52B765] group-hover:text-white transition-all duration-500" size={35} />
+                            <SlTrophy
+                                className="text-[#52B765] group-hover:text-white transition-all duration-500"
+                                size={35}
+                            />
                         </div>
                     </div>
                     <div className="space-y-3 mt-2 ">
@@ -50,7 +53,10 @@ const OurApproachComponent = () => {
                 <div className="flex gap-4 max-w-sm group">
                     <div>
                         <div className="p-5 rounded-full shadow-2xl bg-[#F0F4F8] group-hover:bg-[#52B765] transition-all duration-500">
-                            <PiShirtFolded className="text-[#52B765] group-hover:text-white transition-all duration-500" size={35} />
+                            <PiShirtFolded
+                                className="text-[#52B765] group-hover:text-white transition-all duration-500"
+                                size={35}
+                            />
                         </div>
                     </div>
                     <div className="space-y-3 mt-2 ">
@@ -70,7 +76,10 @@ const OurApproachComponent = () => {
                 <div className="flex gap-4 max-w-sm group">
                     <div>
                         <div className="p-5 rounded-full shadow-2xl bg-[#F0F4F8] group-hover:bg-[#52B765] transition-all duration-500">
-                            <SlTrophy className="text-[#52B765] group-hover:text-white transition-all duration-500" size={35} />
+                            <SlTrophy
+                                className="text-[#52B765] group-hover:text-white transition-all duration-500"
+                                size={35}
+                            />
                         </div>
                     </div>
                     <div className="space-y-3 mt-2 ">

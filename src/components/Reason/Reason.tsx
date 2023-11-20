@@ -9,7 +9,7 @@ const ReasonComponent = () => {
                 <div className="space-y-9">
                     <h2 className="text-4xl font-normal ">
                         Reasons to{" "}
-                        <span className="text-[#4ba0e8]">Choose Us</span>
+                        <span className="text-[#51B765]">Choose Us</span>
                     </h2>
                     <p className="leading-7">
                         Behind our commitment to excellence are few key
