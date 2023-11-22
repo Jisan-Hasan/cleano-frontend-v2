@@ -1,15 +1,19 @@
-import About from "@/components/About/About";
-import AffordablePricesSection from "@/components/AffordablePrices/AffordablePricesSection";
-// import laundry_experience_image from "../../../assets/images/laundry-image-experience.jpg";
+// import About from "@/components/About/About";
+// import AffordablePricesSection from "@/components/AffordablePrices/AffordablePricesSection";
+// import ImportantInformationSection from "@/components/ImportantInformationSection/ImportantInformationSection";
+// import NaturalCleaningProductSection from "@/components/NaturalCleaningProducts/NaturalCleaningProductSection";
+// import ReasonComponent from "@/components/Reason/Reason";
+import Footer from "@/components/ui/footer/Footer";
 
 const HomePage = () => {
     return (
         <div>
-            {/* <About /> */}
-            {/* <ReasonComponent /> */}
-            {/* <ImportantInformationSection /> */}
-            {/* <NaturalCleaningProductSection /> */}
-            <AffordablePricesSection />
+            {/* <About />
+            <ReasonComponent />
+            <ImportantInformationSection />
+            <NaturalCleaningProductSection />
+            <AffordablePricesSection /> */}
+            <Footer />
         </div>
     );
 };
