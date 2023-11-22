@@ -105,7 +105,7 @@ const Footer = () => {
 
             <div className="mt-10 space-y-2">
                 <p className="text-center text-[#E7E7E7]">
-                    © 2021 Cleano. All rights reserved.
+                    © 2023 Cleano. All rights reserved.
                 </p>
                 {/* Develop By Jisan Hasan */}
                 <p className="text-center text-[#E7E7E7]">
