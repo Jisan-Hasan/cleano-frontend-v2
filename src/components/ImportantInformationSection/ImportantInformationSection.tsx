@@ -20,7 +20,7 @@ const ImportantInformationSection = () => {
 
     return (
         <div className="bg-[#F7F7F7]">
-            <div className="max-w-screen-xl mx-auto py-20 px-2 lg:px-0">
+            <div className="max-w-screen-xl mx-auto py-20 px-4 lg:px-0">
                 <div className="space-y-5 text-center">
                     <h6 className="text-[#52B765] text-lg">
                         [Important Information]

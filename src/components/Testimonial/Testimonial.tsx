@@ -61,8 +61,16 @@ const Testimonial = () => {
                     showControls={true}
                     indicators={false}
                     className="cursor-auto"
-                    leftControl={<span><SkipBack size={32} /></span>}
-                    rightControl={<SkipForward size={32} />}
+                    leftControl={
+                        <span className="hidden lg:flex">
+                            <SkipBack size={32} />
+                        </span>
+                    }
+                    rightControl={
+                        <span className="hidden lg:flex">
+                            <SkipForward size={32} />
+                        </span>
+                    }
                 >
                     <TestimonialCard data={testimonialData1} />
                     <TestimonialCard data={testimonialData2} />
