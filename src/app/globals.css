@@ -26,11 +26,10 @@
         color: #677d8f;
     }
 }
-/* 
+
 * {
-    font-family: "Poppins", sans-serif;
-    font-family: "Roboto", sans-serif;
-} */
+    box-sizing: border-box;
+}
 
 /* -----------------------Loading Component Style Start----------------- */
 .loading-infinity {
