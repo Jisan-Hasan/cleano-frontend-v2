@@ -7,9 +7,10 @@ const Banner = () => {
     return (
         <Carousel
             slideInterval={5000}
-            // showControls={true}
+            showControls={true}
             indicators={true}
             indicatorsType="bar"
+            className="overflow-hidden"
         >
             <Banner2 />
             <Banner1 />

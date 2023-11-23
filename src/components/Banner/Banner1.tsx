@@ -3,7 +3,7 @@ import banner1 from "../../assets/images/banner1.jpg";
 const Banner1 = () => {
     return (
         <div
-            className="bg-no-repeat bg-cover bg-center py-10 lg:py-28 xl:py-36 2xl:py-44"
+            className="bg-no-repeat bg-cover bg-center py-10 lg:py-28 xl:py-36 2xl:py-48 cursor-auto overflow-hidden"
             style={{
                 backgroundImage: `url(${banner1.src})`,
             }}

@@ -16,7 +16,7 @@ import cleanoLogo from "../../../assets/images/cleano-logo.png";
 
 const NavbarComponent = () => {
     return (
-        <div className="max-w-screen-xl mx-auto">
+        <div className="max-w-screen-xl mx-auto py-1">
             <Navbar>
                 <Navbar.Container className="flex items-center justify-between">
                     <Navbar.Brand>

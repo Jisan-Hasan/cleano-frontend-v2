@@ -194,7 +194,7 @@ const About = () => {
             <div className="max-w-screen-xl mx-auto md:grid grid-cols-7 px-3 xl:px-0">
                 <div className="py-24 col-span-4">
                     <div>
-                        <h2 className="text-[#4B5B68] font-semibold text-[36px]">
+                        <h2 className="text-[#4B5B68] font-semibold text-2xl md:text-4xl lg:text-6xl">
                             About Our Company
                         </h2>
                         <div className="font-semibold md:text-xl flex gap-3 md:gap-7 items-center  text-[#4B5B68] my-7 ">

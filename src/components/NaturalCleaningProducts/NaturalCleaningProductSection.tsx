@@ -4,8 +4,8 @@ import cleaningProducts from "../../assets/images/cleaning-products.jpg";
 
 const NaturalCleaningProductSection = () => {
     return (
-        <div className="py-20">
-            <div className="max-w-screen-xl mx-auto my-32 md:flex flex-row-reverse justify-center gap-16 px-3 space-y-10 md:space-y-0 md:px-0">
+        <div className="py-10 md:py-14 lg:py-18 xl:py-20 2xl:py-24 ">
+            <div className="max-w-screen-xl mx-auto md:flex flex-row-reverse justify-center gap-16 px-3 space-y-10 md:space-y-0 md:px-0">
                 <div className="space-y-9 w-full max-w-lg">
                     <div className="space-y-9">
                         <h2 className="text-4xl font-semibold tracking-wide">
