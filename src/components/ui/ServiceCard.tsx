@@ -1,31 +1,41 @@
 "use client";
 
-import Image from "next/image";
+import { Card } from "keep-react";
+import { Heart, ShoppingCart } from "phosphor-react";
 import dryCleanImage from "../../assets/images/dry-clean.png";
 
 const ServiceCard = () => {
     return (
-        <div className="max-w-[300px] bg-white py-4 px-3 shadow-sm rounded-md text-center space-y-3 cursor-pointer group w-full mx-auto">
-            <div className="relative">
-                <Image
-                    src={dryCleanImage}
-                    alt=""
-                    className="w-[150px] mx-auto"
-                />
-            </div>
-            <div className="space-y-2">
-                <h3 className="text-3xl font-bold text-[#323232]">
-                    Dry Cleaning
-                </h3>
-                <p className="leading-7">Wash, Dry and Fold</p>
-                <h2 className="text-[#52B765] text-7xl font-bold">$1.99</h2>
-            </div>
-            <div className="w-full transition-all duration-1000 ease-in-out">
-                <button className="border-2 border-[#52B765] text-[#52B765] hover:text-white py-2 px-5 rounded-md hover:bg-[#51B765] transition-all duration-700">
-                    Add To Cart
-                </button>
-            </div>
-        </div>
+        <Card
+            className="max-w-xs overflow-hidden rounded-md mr-3"
+            imgSrc={dryCleanImage.src}
+            imgSize=""
+        >
+            <Card.Container className="p-6">
+                <Card.Container className="my-3">
+                    <Card.Title>Men Nike Shoe</Card.Title>
+                    <Card.Description>
+                        This can save time and effort, and it can also help to
+                        reduce the risk of errors.
+                    </Card.Description>
+                </Card.Container>
+                <Card.Container className="flex items-center justify-between">
+                    <button className="border-2 border-[#52B765] text-[#52B765] hover:text-white py-2 px-2 rounded-md hover:bg-[#51B765] transition-all duration-700 flex items-center">
+                        <span className="pr-2">
+                            <ShoppingCart size={24} />
+                        </span>
+                        Add To Cart
+                    </button>
+                    <div className="cursor-pointer items-center justify-center p-3 rounded-full shadow-2xl bg-[#F0F4F8] hover:bg-[#52B765] transition-all duration-500 group">
+                        <Heart
+                            className="text-[#52B765] group-hover:text-white transition-all duration-500"
+                            size={20}
+                        />
+                    </div>
+                    <Card.Title>$9.99</Card.Title>
+                </Card.Container>
+            </Card.Container>
+        </Card>
     );
 };
 

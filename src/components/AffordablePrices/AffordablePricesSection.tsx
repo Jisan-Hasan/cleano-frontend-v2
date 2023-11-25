@@ -48,6 +48,7 @@ const AffordablePricesSection = () => {
                                 slidesPerView: 4,
                             },
                         }}
+                        
                     >
                         <SwiperSlide>
                             <ServiceCard />
