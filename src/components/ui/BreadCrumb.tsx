@@ -23,7 +23,7 @@ const BreadCrumbComponent = ({ items, title }: IProps) => {
                 backgroundImage: `url(${breadcrumbBanner.src})`,
             }}
         >
-            <div className="max-w-screen-xl mx-auto px-4">
+            <div className="max-w-screen-xl mx-auto px-4 2xl:px-0">
                 <Breadcrumb
                     breadCrumbWithBorder={false}
                     aria-label="Default breadcrumb example"

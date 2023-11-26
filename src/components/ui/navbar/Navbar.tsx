@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Dropdown, Navbar } from "keep-react";
+import { Dropdown, Navbar } from "keep-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -99,14 +99,17 @@ const NavbarComponent = () => {
                         </Navbar.Collapse>
 
                         <Navbar.Container className="flex items-center gap-2 lg:gap-3">
-                            <Button size="xs" type="outlineGray">
+                            <Link
+                                href="/cart"
+                                className="flex items-center border px-2 py-1 rounded hover:text-white hover:bg-[#51B765] hover:b-[#51B765] transition-all duration-300"
+                            >
                                 <span>
-                                    <ShoppingCart size={20} color="#444" />
+                                    <ShoppingCart size={20} />
                                 </span>
                                 <span className="ml-1 text-metal-600">
                                     $0.00
                                 </span>
-                            </Button>
+                            </Link>
                             <Navbar.Container
                                 tag="ul"
                                 className="flex items-center justify-between lg:gap-3"
