@@ -74,6 +74,15 @@ const NavbarComponent = () => {
                             >
                                 About Us
                             </Link>
+                            <Link
+                                href="/contact-us"
+                                className={`hover:text-[#51B765] transition-all duration-300  ${
+                                    pathName.includes("/contact-us") &&
+                                    "border-[#51B765] border-b-4 rounded text-[#51B765]"
+                                }`}
+                            >
+                                Contact Us
+                            </Link>
                         </Navbar.Container>
 
                         <Navbar.Collapse collapseType="sidebar">
@@ -85,6 +94,7 @@ const NavbarComponent = () => {
                                 <Link href="/services">Services</Link>
                                 <Link href="/blogs">Blogs</Link>
                                 <Link href="/about-us">About Us</Link>
+                                <Link href="/contact-us">Contact Us</Link>
                             </Navbar.Container>
                         </Navbar.Collapse>
 

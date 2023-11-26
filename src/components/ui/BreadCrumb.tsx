@@ -39,7 +39,7 @@ const BreadCrumbComponent = ({ items, title }: IProps) => {
                             />
                         }
                     >
-                        <Link href="/" className="text-white lg:text-xl">
+                        <Link href="/home" className="text-white lg:text-xl">
                             Home
                         </Link>
                     </Breadcrumb.Item>
