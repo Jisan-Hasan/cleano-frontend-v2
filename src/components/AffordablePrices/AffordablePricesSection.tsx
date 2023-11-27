@@ -4,6 +4,7 @@ import "swiper/css";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ServiceCard from "../ui/ServiceCard";
+import Link from "next/link";
 
 const AffordablePricesSection = () => {
     return (
@@ -71,9 +72,9 @@ const AffordablePricesSection = () => {
                     </Swiper>
                 </div>
                 <div className="flex justify-center mt-12">
-                    <button className="border-2 border-[#52B765] hover:text-[#52B765] text-white py-2 px-5 rounded-md bg-[#51B765] hover:bg-inherit transition-all duration-700">
+                    <Link href="/services" className="border-2 border-[#52B765] hover:text-[#52B765] text-white py-2 px-5 rounded-md bg-[#51B765] hover:bg-inherit transition-all duration-700">
                         Explore All Services
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>
