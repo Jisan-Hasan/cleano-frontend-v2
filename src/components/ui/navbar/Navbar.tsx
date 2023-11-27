@@ -98,29 +98,34 @@ const NavbarComponent = () => {
                             </Navbar.Container>
                         </Navbar.Collapse>
 
-                        <Navbar.Container className="flex items-center gap-2 lg:gap-3">
-                            <Link
-                                href="/cart"
-                                className="flex items-center border px-2 py-1 rounded hover:text-white hover:bg-[#51B765] hover:b-[#51B765] transition-all duration-300"
-                            >
-                                <span>
-                                    <ShoppingCart size={20} />
-                                </span>
-                                <span className="ml-1 text-metal-600">
-                                    $0.00
-                                </span>
-                            </Link>
-                            <Navbar.Container
-                                tag="ul"
-                                className="flex items-center justify-between lg:gap-3"
-                            >
-                                <Navbar.Link
-                                    icon={<Heart size={20} color="#444" />}
-                                    iconAnimation={false}
-                                />
+                        <Navbar.Container className="flex items-center justify-end gap-2 lg:gap-3">
+                            <div>
+                                <Link
+                                    href="/cart"
+                                    className="flex items-center border px-2 py-1 rounded hover:text-white hover:bg-[#51B765] hover:b-[#51B765] transition-all duration-300"
+                                >
+                                    <span>
+                                        <ShoppingCart size={20} />
+                                    </span>
+                                    <span className="ml-1 text-metal-600">
+                                        $0.00
+                                    </span>
+                                </Link>
+                            </div>
+                            <div className="flex items-center justify-end">
+                                <Link
+                                    href="/wishlist"
+                                    className="p-2 bg-gray-50 rounded-full hover:text-white hover:bg-[#51B765] transition-all duration-300"
+                                >
+                                    <Heart size={20} className="" />
+                                </Link>
 
                                 <Dropdown
-                                    label={<User size={20} color="#444" />}
+                                    label={
+                                        <div className="p-2 bg-gray-50 rounded-full hover:text-white hover:bg-[#51B765] transition-all duration-300">
+                                            <User size={20} className="" />
+                                        </div>
+                                    }
                                     type=""
                                     size="sm"
                                     dismissOnClick={true}
@@ -223,7 +228,7 @@ const NavbarComponent = () => {
                                         </Dropdown.Item>
                                     )}
                                 </Dropdown>
-                            </Navbar.Container>
+                            </div>
                         </Navbar.Container>
                     </Navbar.Container>
                 </Navbar>
