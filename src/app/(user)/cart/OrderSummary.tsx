@@ -30,7 +30,7 @@ const OrderSummary = () => {
                         $ <span className="">{subTotal.toFixed(2)}</span>
                     </p>
                 </div>
-                <Link href="/checkout">
+                <Link href="/cart/checkout">
                     <button
                         type="submit"
                         className="w-full border-2 border-[#52B765] bg-[#52B765] text-white hover:text-[#52B765] hover:bg-white px-6 py-3 font-xl text-lg rounded-md sm:mb-0 transition-all duration-700"

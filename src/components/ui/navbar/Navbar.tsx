@@ -36,7 +36,7 @@ const NavbarComponent = () => {
 
                         <Navbar.Container
                             tag="ul"
-                            className="lg:flex hidden items-center justify-between gap-8 text-lg font-semibold text-black "
+                            className="lg:flex hidden items-center justify-between gap-8 font-semibold text-black "
                         >
                             <Link
                                 href="/home"
