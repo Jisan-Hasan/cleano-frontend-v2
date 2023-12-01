@@ -12,9 +12,10 @@ type IProps = {
         link: string;
     }[];
     title: string;
+    type?: "admin" | "user";
 };
 
-const BreadCrumbComponent = ({ items, title }: IProps) => {
+const BreadCrumbComponent = ({ items, title, type = "user" }: IProps) => {
     const router = useRouter();
     return (
         <div
@@ -39,9 +40,21 @@ const BreadCrumbComponent = ({ items, title }: IProps) => {
                             />
                         }
                     >
-                        <Link href="/home" className="text-white lg:text-xl">
-                            Home
-                        </Link>
+                        {type === "user" ? (
+                            <Link
+                                href="/home"
+                                className="text-white lg:text-xl"
+                            >
+                                Home
+                            </Link>
+                        ) : (
+                            <Link
+                                href="/admin"
+                                className="text-white lg:text-xl"
+                            >
+                                Dashboard
+                            </Link>
+                        )}
                     </Breadcrumb.Item>
                     {items.map((item, index) => {
                         if (index === items.length - 1) {

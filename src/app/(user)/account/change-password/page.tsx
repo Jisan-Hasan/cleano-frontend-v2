@@ -1,6 +1,6 @@
 import BreadCrumbComponent from "@/components/ui/BreadCrumb";
+import ChangePasswordForm from "../../../../components/ui/ChangePasswordForm";
 import MyAccountSidebar from "../MyAccountSidebar";
-import ChangePasswordForm from "./ChangePasswordForm";
 
 const items = [
     {
