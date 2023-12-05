@@ -1,4 +1,5 @@
 import BreadCrumbComponent from "@/components/ui/BreadCrumb";
+import { ServiceTable } from "./ServicesTable";
 
 const items = [
     {
@@ -11,7 +12,7 @@ const AdminServicesPage = () => {
         <div>
             <BreadCrumbComponent items={items} title="Services" type="admin" />
             <div>
-                <h1>Admin Services Page</h1>
+                <ServiceTable />
             </div>
         </div>
     );
