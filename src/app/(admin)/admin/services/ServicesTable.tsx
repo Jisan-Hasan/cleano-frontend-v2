@@ -1,4 +1,5 @@
 "use client";
+import Toggle from "@/components/ui/Toggle";
 import { Avatar, Badge, Button, Table } from "keep-react";
 import Link from "next/link";
 import { ArrowsDownUp, Cube, Pencil, Star, Trash } from "phosphor-react";
@@ -50,6 +51,12 @@ export const ServiceTable = () => {
                 >
                     Rating
                 </Table.HeadCell>
+                <Table.HeadCell
+                    className="min-w-[80px]"
+                    icon={<ArrowsDownUp size={14} color="#8897AE" />}
+                >
+                    Availability
+                </Table.HeadCell>
                 <Table.HeadCell className="min-w-[100px]">
                     Action
                 </Table.HeadCell>
@@ -92,9 +99,14 @@ export const ServiceTable = () => {
                         </div>
                     </Table.Cell>
                     <Table.Cell>
+                        <div>
+                            <Toggle />
+                        </div>
+                    </Table.Cell>
+                    <Table.Cell>
                         <div className="flex gap-3">
                             <Pencil size={20} color="green" />
-                            <Trash size={20} color="red"/>
+                            <Trash size={20} color="red" />
                         </div>
                     </Table.Cell>
                 </Table.Row>

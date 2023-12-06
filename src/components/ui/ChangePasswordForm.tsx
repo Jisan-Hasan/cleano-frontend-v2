@@ -6,6 +6,7 @@ import { TextInput } from "keep-react";
 import { Eye, EyeSlash, Lock } from "phosphor-react";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import PrimaryButton from "./PrimaryButton";
 
 type Inputs = {
     oldPassword: string;
@@ -101,7 +102,9 @@ const ChangePasswordForm = () => {
                         >
                             <span
                                 className="cursor-pointer hover:text-[#51B765]"
-                                onClick={() => setShowNewPassword(!showNewPassword)}
+                                onClick={() =>
+                                    setShowNewPassword(!showNewPassword)
+                                }
                             >
                                 {showNewPassword ? (
                                     <Eye size={20} />
@@ -120,7 +123,9 @@ const ChangePasswordForm = () => {
                         addon={
                             <Lock
                                 size={20}
-                                color={errors.newPassword ? "#E53935" : "#5E718D"}
+                                color={
+                                    errors.newPassword ? "#E53935" : "#5E718D"
+                                }
                             />
                         }
                         addonPosition="left"
@@ -196,12 +201,7 @@ const ChangePasswordForm = () => {
                 </div>
 
                 <div className="mt-2">
-                    <button
-                        type="submit"
-                        className="text-white font-bold text-lg py-3 px-6 rounded-md w-full bg-gradient-to-r from-[#63b492] to-[#51B765]"
-                    >
-                        Change Password
-                    </button>
+                    <PrimaryButton>Change Password</PrimaryButton>
                 </div>
             </form>
         </div>

@@ -4,7 +4,7 @@ import { ServiceTable } from "./ServicesTable";
 const items = [
     {
         label: "Services",
-        link: "/services",
+        link: "/admin/services",
     },
 ];
 const AdminServicesPage = () => {
