@@ -1,3 +1,4 @@
+import Providers from "@/lib/Providers";
 import type { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
@@ -13,11 +14,13 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
-            <body>
-                <Toaster />
-                {children}
-            </body>
-        </html>
+        <Providers>
+            <html lang="en">
+                <body>
+                    <Toaster />
+                    {children}
+                </body>
+            </html>
+        </Providers>
     );
 }
