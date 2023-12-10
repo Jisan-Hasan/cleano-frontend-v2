@@ -3,13 +3,16 @@
 import SocialLogin from "@/components/ui/SocialLogin";
 import { useLoginMutation } from "@/redux/api/authApi";
 import { useAppDispatch } from "@/redux/app/hooks";
+import { setToken } from "@/redux/features/authSlice";
 import { loginSchema } from "@/schemas/auth.schema";
+import { getUserInfo } from "@/utils/auth";
 import { useYupValidationResolver } from "@/utils/schema-validator";
 import { TextInput } from "keep-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Envelope, Eye, EyeSlash, Lock } from "phosphor-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import loginImage from "../../../assets/images/login-image.png";
@@ -24,22 +27,13 @@ const LoginPage = () => {
     const resolver = useYupValidationResolver(loginSchema);
 
     const dispatch = useAppDispatch();
+    const router = useRouter();
 
-    const [login, { data: loginResponseData, error: loginResponseError }] =
-        useLoginMutation();
+    // Get the redirect path from the query params
+    const searchParams = useSearchParams();
+    const redirectTo = searchParams.get("redirect");
 
-    useEffect(() => {
-        if (loginResponseData) {
-            toast.success(loginResponseData.message);
-        }
-
-        if (loginResponseError) {
-            toast.error(
-                // @ts-ignore
-                loginResponseError?.data?.message || "Something went wrong"
-            );
-        }
-    }, [loginResponseData, loginResponseError]);
+    const [login] = useLoginMutation();
 
     const {
         register,
@@ -48,10 +42,35 @@ const LoginPage = () => {
         reset,
     } = useForm<Inputs>({ resolver });
 
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
-        login(data);
+    const onSubmit: SubmitHandler<Inputs> = async (data) => {
+        try {
+            login({ ...data })
+                .unwrap()
+                .then((data) => {
+                    // Set the token in the redux store
+                    dispatch(setToken(data?.data?.accessToken));
+                    // Show a success toast
+                    toast.success(data.message || "Login Successful");
 
-        // reset();
+                    // get user role
+                    const { role } = getUserInfo();
+                    console.log(role);
+
+                    // Redirect to the admin dashboard if the user is an admin
+                    if (role === "admin") {
+                        router.push("/admin");
+                    } else if (role === "user") {
+                        router.push(redirectTo || "/");
+                    }
+                })
+                .catch((err) => {
+                    toast.error(err.data.message || "Login Failed");
+                });
+        } catch (error: any) {
+            toast.error(error.data.message || "Login Failed. Try Again");
+        }
+
+        reset();
     };
 
     return (

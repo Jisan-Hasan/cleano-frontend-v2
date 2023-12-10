@@ -9,11 +9,17 @@ export const authApi = baseApi.injectEndpoints({
             query: (data) => ({
                 url: `${AUTH_URL}/login`,
                 method: "POST",
-                data,
+                body: data,
             }),
             invalidatesTags: [tagType.user],
+        }),
+        verifyToken: build.query({
+            query: (token: string) => ({
+                url: `${AUTH_URL}/verify-token/${token}`,
+                method: "GET",
+            }),
         }),
     }),
 });
 
-export const { useLoginMutation } = authApi;
+export const { useLoginMutation, useVerifyTokenQuery } = authApi;

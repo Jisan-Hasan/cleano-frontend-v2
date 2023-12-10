@@ -1,9 +1,12 @@
 "use client";
 
+import { useAppDispatch } from "@/redux/app/hooks";
+import { clearToken } from "@/redux/features/authSlice";
 import { Sidebar } from "keep-react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
     Chat,
     Handbag,
@@ -16,6 +19,15 @@ import {
 import cleanoLogo from "../../assets/images/cleano-logo.png";
 
 const AdminSidebar = () => {
+    const dispatch = useAppDispatch();
+    const router = useRouter();
+
+    const handleLogout = () => {
+        // clear token from local storage and state
+        dispatch(clearToken());
+        // redirect to login page
+        router.push("/login");
+    };
     return (
         <Sidebar aria-label="Admin Sidebar">
             <Sidebar.ItemGroup>
@@ -91,7 +103,7 @@ const AdminSidebar = () => {
             </Sidebar.ItemGroup>
 
             <Sidebar.ItemGroup>
-                <div className="cursor-pointer">
+                <div className="cursor-pointer" onClick={handleLogout}>
                     <Sidebar.Item icon={<TreeStructure size={24} />}>
                         Sign Out
                     </Sidebar.Item>

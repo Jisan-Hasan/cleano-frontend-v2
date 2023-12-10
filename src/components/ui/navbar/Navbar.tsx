@@ -4,21 +4,12 @@ import { Dropdown, Navbar } from "keep-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-    AddressBook,
-    Heart,
-    ListNumbers,
-    ShoppingCart,
-    SignIn,
-    SignOut,
-    User,
-} from "phosphor-react";
+import { Heart, ShoppingCart, User } from "phosphor-react";
 import cleanoLogo from "../../../assets/images/cleano-logo.png";
+import NavbarProfileDropDown from "./NavbarProfileDropDown";
 
 const NavbarComponent = () => {
     const pathName = usePathname();
-
-    const isUserLoggedIn = true;
 
     return (
         <div>
@@ -122,6 +113,7 @@ const NavbarComponent = () => {
                                         <Heart size={20} className="" />
                                     </Link>
 
+                                    {/* Dynamic options for users */}
                                     <Dropdown
                                         label={
                                             <div className="p-2 bg-gray-50 rounded-full hover:text-white hover:bg-[#51B765]">
@@ -133,102 +125,7 @@ const NavbarComponent = () => {
                                         dismissOnClick={true}
                                         arrowIcon={false}
                                     >
-                                        {isUserLoggedIn && (
-                                            <>
-                                                <Link href="/account">
-                                                    <Dropdown.Item
-                                                        icon={
-                                                            <User
-                                                                size={20}
-                                                                color="#444"
-                                                            />
-                                                        }
-                                                    >
-                                                        My Account
-                                                    </Dropdown.Item>
-                                                </Link>
-                                                <Link href="/account/orders">
-                                                    <Dropdown.Item
-                                                        icon={
-                                                            <ListNumbers
-                                                                size={20}
-                                                                color="#5E718D"
-                                                            />
-                                                        }
-                                                    >
-                                                        My Orders
-                                                    </Dropdown.Item>
-                                                </Link>
-                                            </>
-                                        )}
-
-                                        {/* My Wishlist */}
-                                        <Link href="/wishlist">
-                                            <Dropdown.Item
-                                                icon={
-                                                    <Heart
-                                                        size={20}
-                                                        color="#5E718D"
-                                                    />
-                                                }
-                                            >
-                                                My Wishlist
-                                            </Dropdown.Item>
-                                        </Link>
-                                        {/* My Cart */}
-                                        <Link href="/cart">
-                                            <Dropdown.Item
-                                                icon={
-                                                    <ShoppingCart
-                                                        size={20}
-                                                        color="#5E718D"
-                                                    />
-                                                }
-                                            >
-                                                My Cart
-                                            </Dropdown.Item>
-                                        </Link>
-
-                                        {!isUserLoggedIn ? (
-                                            <>
-                                                <Link href="/register">
-                                                    <Dropdown.Item
-                                                        icon={
-                                                            <AddressBook
-                                                                size={20}
-                                                                color="#5E718D"
-                                                            />
-                                                        }
-                                                    >
-                                                        Register
-                                                    </Dropdown.Item>
-                                                </Link>
-
-                                                <Link href="/login">
-                                                    <Dropdown.Item
-                                                        icon={
-                                                            <SignIn
-                                                                size={20}
-                                                                color="#5E718D"
-                                                            />
-                                                        }
-                                                    >
-                                                        Login
-                                                    </Dropdown.Item>
-                                                </Link>
-                                            </>
-                                        ) : (
-                                            <Dropdown.Item
-                                                icon={
-                                                    <SignOut
-                                                        size={20}
-                                                        color="#5E718D"
-                                                    />
-                                                }
-                                            >
-                                                Logout
-                                            </Dropdown.Item>
-                                        )}
+                                        <NavbarProfileDropDown />
                                     </Dropdown>
                                 </Navbar.Container>
                             </div>

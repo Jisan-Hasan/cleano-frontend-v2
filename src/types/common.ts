@@ -4,11 +4,18 @@ export interface IMeta {
     total: number;
 }
 
-export interface ApiError {
+export type ResponseSuccessType = {
+    data: any;
+    meta?: IMeta;
+};
+
+export type IGenericErrorResponse = {
     status: number;
-    data: {
-        success: boolean;
-        message: string;
-        errorMessages: [];
-    };
-}
+    message: string;
+    errorMessages: IGenericErrorMessage[];
+};
+
+export type IGenericErrorMessage = {
+    path: string | number;
+    message: string;
+};
