@@ -13,13 +13,34 @@ export const authApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: [tagType.user],
         }),
+
         verifyToken: build.query({
             query: (token: string) => ({
                 url: `${AUTH_URL}/verify-token/${token}`,
                 method: "GET",
             }),
         }),
+
+        signup: build.mutation({
+            query: (data) => ({
+                url: `${AUTH_URL}/signup`,
+                method: "POST",
+                body: data,
+            }),
+        }),
+
+        verifyEmail: build.query({
+            query: (token) => ({
+                url: `${AUTH_URL}/verify-email/${token}`,
+                method: "GET",
+            }),
+        }),
     }),
 });
 
-export const { useLoginMutation, useVerifyTokenQuery } = authApi;
+export const {
+    useLoginMutation,
+    useVerifyTokenQuery,
+    useSignupMutation,
+    useVerifyEmailQuery,
+} = authApi;

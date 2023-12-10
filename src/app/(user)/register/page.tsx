@@ -1,14 +1,18 @@
 "use client";
 
+import PrimaryButton from "@/components/ui/PrimaryButton";
 import SocialLogin from "@/components/ui/SocialLogin";
+import { useSignupMutation } from "@/redux/api/authApi";
 import { registerSchema } from "@/schemas/auth.schema";
 import { useYupValidationResolver } from "@/utils/schema-validator";
 import { TextInput } from "keep-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Envelope, Eye, EyeSlash, Lock, User } from "phosphor-react";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import registerImage from "../../../assets/images/register-image.png";
 
 type Inputs = {
@@ -24,6 +28,10 @@ const RegisterPage = () => {
         useState<boolean>(false);
     const resolver = useYupValidationResolver(registerSchema);
 
+    const [signup] = useSignupMutation();
+
+    const router = useRouter();
+
     const {
         register,
         handleSubmit,
@@ -32,7 +40,28 @@ const RegisterPage = () => {
     } = useForm<Inputs>({ resolver });
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
-        console.log(data);
+        const signupData = {
+            name: data.name,
+            email: data.email,
+            password: data.password,
+        };
+        try {
+            signup({ ...signupData })
+                .unwrap()
+                .then((res) => {
+                    // Show a success toast
+                    toast.success(res.message || "Registration Successful");
+
+                    // Redirect to the login page
+                    router.push("/login");
+                })
+                .catch((err) => {
+                    console.log(err);
+                    toast.error(err.data.message || "Registration Failed");
+                });
+        } catch (error: any) {
+            toast.error(error.data.message || "Registration Failed. Try Again");
+        }
         reset();
     };
 
@@ -103,9 +132,7 @@ const RegisterPage = () => {
                                     <Envelope
                                         size={20}
                                         color={
-                                            errors.email
-                                                ? "#E53935"
-                                                : "#5E718D"
+                                            errors.email ? "#E53935" : "#5E718D"
                                         }
                                     />
                                 }
@@ -248,12 +275,7 @@ const RegisterPage = () => {
                         </div>
 
                         <div className="mt-2">
-                            <button
-                                type="submit"
-                                className="text-white font-bold text-lg py-3 px-6 rounded-md w-full bg-gradient-to-r from-[#63b492] to-[#51B765]"
-                            >
-                                Login
-                            </button>
+                            <PrimaryButton>Register New Account</PrimaryButton>
                         </div>
                     </form>
                     <hr className="my-5" />
