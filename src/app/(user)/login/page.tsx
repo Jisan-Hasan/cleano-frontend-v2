@@ -1,14 +1,17 @@
 "use client";
 
 import SocialLogin from "@/components/ui/SocialLogin";
+import { useLoginMutation } from "@/redux/api/authApi";
+import { useAppDispatch } from "@/redux/app/hooks";
 import { loginSchema } from "@/schemas/auth.schema";
 import { useYupValidationResolver } from "@/utils/schema-validator";
 import { TextInput } from "keep-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Envelope, Eye, EyeSlash, Lock } from "phosphor-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import loginImage from "../../../assets/images/login-image.png";
 
 type Inputs = {
@@ -20,6 +23,24 @@ const LoginPage = () => {
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const resolver = useYupValidationResolver(loginSchema);
 
+    const dispatch = useAppDispatch();
+
+    const [login, { data: loginResponseData, error: loginResponseError }] =
+        useLoginMutation();
+
+    useEffect(() => {
+        if (loginResponseData) {
+            toast.success(loginResponseData.message);
+        }
+
+        if (loginResponseError) {
+            toast.error(
+                // @ts-ignore
+                loginResponseError?.data?.message || "Something went wrong"
+            );
+        }
+    }, [loginResponseData, loginResponseError]);
+
     const {
         register,
         handleSubmit,
@@ -28,8 +49,9 @@ const LoginPage = () => {
     } = useForm<Inputs>({ resolver });
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
-        console.log(data);
-        reset();
+        login(data);
+
+        // reset();
     };
 
     return (
