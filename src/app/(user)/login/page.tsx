@@ -1,6 +1,8 @@
 "use client";
 
+import PrimaryButton from "@/components/ui/PrimaryButton";
 import SocialLogin from "@/components/ui/SocialLogin";
+import Spinner from "@/components/ui/Spinner";
 import { useLoginMutation } from "@/redux/api/authApi";
 import { useAppDispatch } from "@/redux/app/hooks";
 import { setToken } from "@/redux/features/authSlice";
@@ -33,7 +35,7 @@ const LoginPage = () => {
     const searchParams = useSearchParams();
     const redirectTo = searchParams.get("redirect");
 
-    const [login] = useLoginMutation();
+    const [login, { isLoading }] = useLoginMutation();
 
     const {
         register,
@@ -189,12 +191,13 @@ const LoginPage = () => {
                         </div>
 
                         <div className="mt-2">
-                            <button
-                                type="submit"
-                                className="text-white font-bold text-lg py-3 px-6 rounded-md w-full bg-gradient-to-r from-[#63b492] to-[#51B765]"
-                            >
-                                Login
-                            </button>
+                            <PrimaryButton>
+                                {isLoading ? (
+                                    <Spinner />
+                                ) : (
+                                    "Login to my Account"
+                                )}
+                            </PrimaryButton>
                         </div>
                     </form>
                     <hr className="my-5" />

@@ -2,6 +2,7 @@
 
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import SocialLogin from "@/components/ui/SocialLogin";
+import Spinner from "@/components/ui/Spinner";
 import { useSignupMutation } from "@/redux/api/authApi";
 import { registerSchema } from "@/schemas/auth.schema";
 import { useYupValidationResolver } from "@/utils/schema-validator";
@@ -28,7 +29,7 @@ const RegisterPage = () => {
         useState<boolean>(false);
     const resolver = useYupValidationResolver(registerSchema);
 
-    const [signup] = useSignupMutation();
+    const [signup, { isLoading }] = useSignupMutation();
 
     const router = useRouter();
 
@@ -275,7 +276,13 @@ const RegisterPage = () => {
                         </div>
 
                         <div className="mt-2">
-                            <PrimaryButton>Register New Account</PrimaryButton>
+                            <PrimaryButton>
+                                {isLoading ? (
+                                    <Spinner />
+                                ) : (
+                                    "Register New Account"
+                                )}
+                            </PrimaryButton>
                         </div>
                     </form>
                     <hr className="my-5" />
