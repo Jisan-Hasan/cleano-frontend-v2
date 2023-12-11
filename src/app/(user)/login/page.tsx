@@ -66,10 +66,13 @@ const LoginPage = () => {
                     }
                 })
                 .catch((err) => {
-                    toast.error(err.data.message || "Login Failed");
+                    console.log(err);
+                    toast.error(
+                        err?.error || err?.data?.message || "Login Failed"
+                    );
                 });
         } catch (error: any) {
-            toast.error(error.data.message || "Login Failed. Try Again");
+            toast.error(error?.data?.message || "Login Failed. Try Again");
         }
 
         reset();
@@ -191,7 +194,7 @@ const LoginPage = () => {
                         </div>
 
                         <div className="mt-2">
-                            <PrimaryButton>
+                            <PrimaryButton disabled={isLoading}>
                                 {isLoading ? (
                                     <Spinner />
                                 ) : (

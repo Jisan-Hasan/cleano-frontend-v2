@@ -12,7 +12,7 @@ export const baseApi = createApi({
             const token = getFromLocalStorage(authKey);
 
             if (token) {
-                headers.set("authorization", `${token}`);
+                headers.set("authorization", `Bearer ${token}`);
             }
 
             return headers;
