@@ -13,7 +13,16 @@ export const serviceApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: [tagType.service],
         }),
+
+        getAllServices: build.query({
+            query: (args: Record<string, any>) => ({
+                url: `${SERVICE_URL}`,
+                method: "GET",
+                params: args,
+            }),
+            providesTags: [tagType.service],
+        }),
     }),
 });
 
-export const { useCreateServiceMutation } = serviceApi;
+export const { useCreateServiceMutation, useGetAllServicesQuery } = serviceApi;
