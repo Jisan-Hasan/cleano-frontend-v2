@@ -3,7 +3,7 @@
 import { Switch } from "@headlessui/react";
 import { useState } from "react";
 
-const Toggle = () => {
+const Toggle = ({ isEnabled = false }: { isEnabled: boolean }) => {
     const [enabled, setEnabled] = useState<boolean>(false);
 
     return (
