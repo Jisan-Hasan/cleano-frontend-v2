@@ -30,6 +30,33 @@ export const serviceApi = baseApi.injectEndpoints({
                 body: data,
             }),
             invalidatesTags: [tagType.service],
+            // TODO: optimistic cache update in update mutation
+        }),
+
+        deleteService: build.mutation({
+            query: (id) => ({
+                url: `${SERVICE_URL}/${id}`,
+                method: "DELETE",
+            }),
+            invalidatesTags: [tagType.service],
+            // TODO: optimistic cache update in delete mutation
+            // optimistic cache update in delete mutation
+            // onQueryStarted(id, { dispatch, queryFulfilled }) {
+            //     const patchResult = dispatch(
+            //         serviceApi.util.updateQueryData(
+            //             "getAllServices",
+            //             id,
+            //             (draft) => {
+            //                 const index = draft.findIndex(
+            //                     (item) => item.id === id
+            //                 );
+            //                 if (index !== -1) draft.splice(index, 1);
+            //             }
+            //         )
+            //     );
+
+            //     queryFulfilled.catch(patchResult.undo);
+            // },
         }),
     }),
 });
@@ -38,4 +65,5 @@ export const {
     useCreateServiceMutation,
     useGetAllServicesQuery,
     useUpdateServiceMutation,
+    useDeleteServiceMutation,
 } = serviceApi;
