@@ -39,7 +39,7 @@ const AdminDashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
                 {/* Main Content */}
                 <div className={`flex-1 ${sidebarVisible && "hidden"}`}>
-                    <div className="p-4">{children}</div>
+                    <div className="">{children}</div>
                 </div>
             </div>
         </PrivateRoute>

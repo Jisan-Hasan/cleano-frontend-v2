@@ -212,9 +212,13 @@ export const ServiceTable = () => {
                             </Table.Cell>
                             <Table.Cell>
                                 <div className="flex gap-3">
-                                    <div className="cursor-pointer">
-                                        <Pencil size={20} color="green" />
-                                    </div>
+                                    <Link
+                                        href={`/admin/services/edit/${service?.id}`}
+                                    >
+                                        <div className="cursor-pointer">
+                                            <Pencil size={20} color="green" />
+                                        </div>
+                                    </Link>
 
                                     <div
                                         className="cursor-pointer"

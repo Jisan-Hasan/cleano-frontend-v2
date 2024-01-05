@@ -155,7 +155,6 @@ const LoginPage = () => {
                                 </label>
                             </div>
                             <TextInput
-                                id="#id-10"
                                 placeholder="*************"
                                 color={errors.password ? "error" : "gray"}
                                 sizing="lg"

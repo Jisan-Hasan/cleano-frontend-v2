@@ -58,7 +58,7 @@ const RegisterPage = () => {
                 })
                 .catch((err) => {
                     console.log(err);
-                    toast.error(err.data.message || "Registration Failed");
+                    toast.error(err?.data?.message || "Registration Failed");
                 });
         } catch (error: any) {
             toast.error(error.data.message || "Registration Failed. Try Again");
@@ -177,7 +177,6 @@ const RegisterPage = () => {
                                 </label>
                             </div>
                             <TextInput
-                                id="#id-10"
                                 placeholder="*************"
                                 color={errors.password ? "error" : "gray"}
                                 sizing="lg"
@@ -239,7 +238,6 @@ const RegisterPage = () => {
                                 </label>
                             </div>
                             <TextInput
-                                id="#id-10"
                                 placeholder="*************"
                                 color={
                                     errors.confirmPassword ? "error" : "gray"
