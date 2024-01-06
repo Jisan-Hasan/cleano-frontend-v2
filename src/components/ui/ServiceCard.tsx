@@ -1,11 +1,22 @@
 "use client";
 
+import { useAppDispatch } from "@/redux/app/hooks";
+import { addToCart } from "@/redux/features/cartSlice";
 import { Card } from "keep-react";
+import dynamic from "next/dynamic";
 import { Heart, ShoppingCart } from "phosphor-react";
 import dryCleanImage from "../../assets/images/dry-clean.png";
 
 const ServiceCard = ({ service }: { service: any }) => {
   const { id, image, title, description, price, isAvailable } = service;
+
+  // hooks
+  const dispatch = useAppDispatch();
+
+  const handleAddToCart = () => {
+    // dispatch add to cart action with payload
+    dispatch(addToCart({ id, image, title, price }));
+  };
 
   return (
     <Card
@@ -79,7 +90,10 @@ const ServiceCard = ({ service }: { service: any }) => {
                     </Card.Description> */}
         </Card.Container>
         <Card.Container className="flex items-center justify-between">
-          <button className="flex items-center rounded-md border-2 border-[#52B765] px-4 py-2 text-[#52B765] transition-all duration-700 hover:bg-[#51B765] hover:text-white">
+          <button
+            className="flex items-center rounded-md border-2 border-[#52B765] px-4 py-2 text-[#52B765] transition-all duration-700 hover:bg-[#51B765] hover:text-white"
+            onClick={handleAddToCart}
+          >
             <span className="pr-2">
               <ShoppingCart size={24} />
             </span>
@@ -97,4 +111,6 @@ const ServiceCard = ({ service }: { service: any }) => {
   );
 };
 
-export default ServiceCard;
+export default dynamic(() => Promise.resolve(ServiceCard), {
+  ssr: false,
+});
