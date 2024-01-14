@@ -1,6 +1,7 @@
 "use client";
 
 import { useAppSelector } from "@/redux/app/hooks";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 
 const subTotal = 0;
@@ -52,4 +53,6 @@ const OrderSummary = () => {
   );
 };
 
-export default OrderSummary;
+export default dynamic(() => Promise.resolve(OrderSummary), {
+  ssr: false,
+});
