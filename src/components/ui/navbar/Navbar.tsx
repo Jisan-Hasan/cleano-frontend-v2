@@ -19,10 +19,9 @@ const NavbarComponent = () => {
   const { cart } = useAppSelector((state) => state.cart);
 
   // calculate total price of cart items
-  const totalPrice = cart.reduce(
-    (total: number, item: any) => total + item.price * item.quantity,
-    0,
-  );
+  const totalPrice = cart
+    .reduce((total: number, item: any) => total + item.price * item.quantity, 0)
+    .toFixed(2);
 
   return (
     <div>

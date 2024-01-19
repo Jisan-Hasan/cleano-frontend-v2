@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+// @ts-ignore
+import keepPreset from "keep-react/preset";
 
 const config: Config = {
     content: [
@@ -17,6 +19,6 @@ const config: Config = {
         },
     },
     plugins: [],
-    presets: [require("keep-react/src/keep-preset.js")],
+    presets: [keepPreset],
 };
 export default config;
