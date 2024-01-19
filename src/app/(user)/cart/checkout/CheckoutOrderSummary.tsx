@@ -1,106 +1,166 @@
 "use client";
 
-import { NumberInput, TextInput, Textarea } from "keep-react";
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
+import { decreaseQuantity, increaseQuantity } from "@/redux/features/cartSlice";
+import { TextInput, Textarea } from "keep-react";
+// import dynamic from "next/dynamic";
 import Image from "next/image";
-import { useState } from "react";
-import userImage from "../../../../assets/images/avatar.png";
 
 const CheckoutOrderSummary = () => {
-    const [value, setValue] = useState<number>(1);
-    return (
-        <div className="bg-[#F5F5F5] p-5 space-y-4">
-            <div>
-                <h2 className="text-xl font-medium">Order Summary</h2>
-                <hr className="mt-1" />
-            </div>
-            {/* Services */}
-            <div>
-                <div>
-                    <div className="flex gap-3 items-center">
-                        <div className="w-20 h-20">
-                            <Image src={userImage} alt="product image" />
-                        </div>
-                        <div className="flex-1 space-y-2">
-                            <h4 className="md:text-lg font-medium">
-                                Shirt Clean & Laundry
-                            </h4>
-                            <div className="flex justify-between items-center">
-                                <div>
-                                    <NumberInput
-                                        sizing="sm"
-                                        value={value}
-                                        setValue={setValue}
-                                    />
-                                </div>
-                                <p className="justify-self-end">$50.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <hr className="mt-2" />
-                </div>
-            </div>
-            {/* Discount Form & Special Note */}
-            <div>
-                {/* Discount Form */}
-                <div className="flex items-center gap-3">
-                    <div className="flex-1">
-                        <TextInput
-                            id="input"
-                            placeholder="Apply Discount Code"
-                            color="gray"
-                            sizing="sm"
-                        />
-                    </div>
-                    <button className="bg-[#F1F1F1] px-3 py-[5px] rounded-md border">
-                        Apply
-                    </button>
-                </div>
-                {/* Add Special Note Form */}
-                <div className="mt-2">
-                    <Textarea
-                        placeholder="Add a note for your order"
-                        withBg={true}
-                        color="gray"
-                        border={true}
-                        rows={2}
-                    />
-                </div>
-                <hr className="mt-2" />
-            </div>
+  // hooks
+  const dispatch = useAppDispatch();
+  // get cart items from redux store
+  const { cart } = useAppSelector((state) => state.cart);
 
-            {/* Total */}
-            <div className="space-y-1">
-                <div className="flex justify-between">
-                    <p>Cart Subtotal</p>
-                    <p>$50.00</p>
-                </div>
-                <div className="flex justify-between">
-                    <p>Discount</p>
-                    <p>$0.00</p>
-                </div>
-                <div className="flex justify-between">
-                    <p>Order Total</p>
-                    <p>$0.00</p>
-                </div>
-            </div>
-            {/* Agree With Terms and Conditions */}
+  return (
+    <div className="space-y-4 bg-[#F5F5F5] p-5">
+      <div>
+        <h2 className="text-xl font-medium">Order Summary</h2>
+        <hr className="mt-1" />
+      </div>
+      {/* Services */}
+      <div>
+        {cart?.map((item: any, index: number) => (
+          <div key={index}>
             <div className="flex items-center gap-3">
-                <input type="checkbox" name="terms" id="terms" />
-                <label htmlFor="terms">
-                    I agree with the terms and conditions
-                </label>
+              <div className="h-20 w-20">
+                <Image
+                  src={item?.image}
+                  alt="product image"
+                  width={80}
+                  height={80}
+                />
+              </div>
+              <div className="flex-1 space-y-2">
+                <h4 className="font-medium md:text-lg">{item?.title}</h4>
+                <div className="flex items-center justify-between">
+                  <div className="mt-1 flex h-8 w-28 items-center rounded border border-gray-200">
+                    <button
+                      // tabIndex="-1"
+                      // for="show_more"
+                      className="cursor-pointer border-r border-gray-200 text-gray-500 outline-none transition-all hover:text-blue-600 focus:outline-none"
+                      onClick={() =>
+                        dispatch(decreaseQuantity({ id: item.id }))
+                      }
+                      disabled={item.quantity === 1}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="mx-2 h-4 w-4"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </button>
+                    <input
+                      name="soda"
+                      id="soda"
+                      className="w-full appearance-none bg-transparent px-2 text-center text-gray-800 outline-none"
+                      value={item.quantity}
+                      readOnly
+                    />
+                    <button
+                      // tabIndex="-1"
+                      // for="show_more"
+                      className="cursor-pointer border-l border-gray-200 text-gray-500 outline-none transition-all hover:text-blue-600 focus:outline-none"
+                      onClick={() =>
+                        dispatch(increaseQuantity({ id: item.id }))
+                      }
+                      disabled={item.quantity === 99}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="mx-2 h-4 w-4 fill-current"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  <p className="justify-self-end">
+                    ${(item?.quantity * item?.price).toFixed(2)}
+                  </p>
+                </div>
+              </div>
             </div>
-            {/* Place Order Button */}
-            <div>
-                <button
-                    type="submit"
-                    className="w-full border-2 border-[#52B765] bg-[#52B765] text-white hover:text-[#52B765] hover:bg-white px-6 py-3 font-xl text-lg rounded-md sm:mb-0 transition-all duration-700"
-                >
-                    Place Order
-                </button>
-            </div>
+            <hr className="my-2" />
+          </div>
+        ))}
+      </div>
+      {/* Discount Form & Special Note */}
+      <div>
+        {/* Discount Form */}
+        <div className="flex items-center gap-3">
+          <div className="flex-1">
+            <TextInput
+              id="input"
+              placeholder="Apply Discount Code"
+              color="gray"
+              sizing="sm"
+            />
+          </div>
+          <button className="rounded-md border bg-[#F1F1F1] px-3 py-[5px]">
+            Apply
+          </button>
         </div>
-    );
+        {/* Add Special Note Form */}
+        <div className="mt-2">
+          <Textarea
+            placeholder="Add a note for your order"
+            withBg={true}
+            color="gray"
+            border={true}
+            rows={2}
+          />
+        </div>
+        <hr className="mt-2" />
+      </div>
+
+      {/* Total */}
+      <div className="space-y-1">
+        <div className="flex justify-between">
+          <p>Cart Subtotal</p>
+          <p>$50.00</p>
+        </div>
+        <div className="flex justify-between">
+          <p>Discount</p>
+          <p>$0.00</p>
+        </div>
+        <div className="flex justify-between">
+          <p>Order Total</p>
+          <p>$0.00</p>
+        </div>
+      </div>
+      {/* Agree With Terms and Conditions */}
+      <div className="flex items-center gap-3">
+        <input type="checkbox" name="terms" id="terms" />
+        <label htmlFor="terms">I agree with the terms and conditions</label>
+      </div>
+      {/* Place Order Button */}
+      <div>
+        <button
+          type="submit"
+          className="font-xl w-full rounded-md border-2 border-[#52B765] bg-[#52B765] px-6 py-3 text-lg text-white transition-all duration-700 hover:bg-white hover:text-[#52B765] sm:mb-0"
+        >
+          Place Order
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default CheckoutOrderSummary;
+
+// export default dynamic(() => Promise.resolve(CheckoutOrderSummary), {
+//   ssr: false,
+// });
