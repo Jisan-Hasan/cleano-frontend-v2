@@ -2,6 +2,7 @@
 
 import BreadCrumbComponent from "@/components/ui/BreadCrumb";
 import { DatePickerComponent } from "@/components/ui/DatePickerComponent";
+import { TimePickerComponent } from "@/components/ui/TimePickerComponent";
 import dynamic from "next/dynamic";
 import { useForm } from "react-hook-form";
 import CheckoutOrderSummary from "./CheckoutOrderSummary";
@@ -79,7 +80,7 @@ const CheckoutPage = () => {
                 </div>
                 <div>
                   <label className="block">Select Pickup Time</label>
-                  {/* <TimePickerComponent
+                  <TimePickerComponent
                     setValue={setValue}
                     setError={setError}
                     clearErrors={clearErrors}
@@ -90,7 +91,7 @@ const CheckoutPage = () => {
                       {(errors?.time?.message as String) ||
                         "*Invalid Time Input"}
                     </div>
-                  )} */}
+                  )}
                 </div>
               </div>
             </div>
@@ -102,7 +103,12 @@ const CheckoutPage = () => {
               </h3>
 
               <div className="my-5 flex gap-5">
-                <ChoosePayment />
+                <ChoosePayment
+                  setValue={setValue}
+                  setError={setError}
+                  clearErrors={clearErrors}
+                  errors={errors}
+                />
               </div>
             </div>
           </div>

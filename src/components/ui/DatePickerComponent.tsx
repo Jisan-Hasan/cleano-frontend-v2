@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 // get only the date
 const getOnlyDate = (date: Date) => {
-    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 };
 
 export const DatePickerComponent = ({
@@ -48,7 +48,7 @@ export const DatePickerComponent = ({
   }, [date, setValue, setError, clearErrors]);
 
   return (
-    <DatePicker placeholder="Date / Month / Year" singleDate={setDate}>
+    <DatePicker singleDatePicker={setDate}>
       <DatePicker.SingleDate />
     </DatePicker>
   );

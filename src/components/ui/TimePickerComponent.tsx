@@ -41,18 +41,10 @@ export const TimePickerComponent = ({
   //   get the date from the date picker component
   const date = getValues("date");
 
-  console.log(date);
 
   //   check if date is today
   const isToday =
     new Date(date).getDate() == new Date().getDate() ? true : false;
-
-  console.log({
-    selected: new Date(date).getDate(),
-    today: new Date().getDate(),
-  });
-
-  console.log(isToday);
 
   useEffect(() => {
     setValue("time", time != null ? time : null);
