@@ -2,11 +2,13 @@
 
 import { useAppSelector } from "@/redux/app/hooks";
 import dynamic from "next/dynamic";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const subTotal = 0;
 
 const OrderSummary = () => {
+  // hooks
+  const router = useRouter();
   // get cart items from redux store
   const { cart } = useAppSelector((state) => state.cart);
 
@@ -40,14 +42,16 @@ const OrderSummary = () => {
             $ <span className="">{totalPrice}</span>
           </p>
         </div>
-        <Link href="/cart/checkout">
+        <>
           <button
             type="submit"
-            className="font-xl w-full rounded-md border-2 border-[#52B765] bg-white px-6 py-3 text-lg text-[#52B765] transition-all duration-700 hover:bg-[#52B765] hover:text-white sm:mb-0"
+            className="font-xl w-full rounded-md border-2 border-[#52B765] bg-white px-6 py-3 text-lg text-[#52B765] transition-all duration-700 hover:bg-[#52B765] hover:text-white disabled:cursor-not-allowed disabled:opacity-30 sm:mb-0"
+            disabled={cart?.length === 0}
+            onClick={() => router.push("/cart/checkout")}
           >
             Checkout
           </button>
-        </Link>
+        </>
       </div>
     </div>
   );

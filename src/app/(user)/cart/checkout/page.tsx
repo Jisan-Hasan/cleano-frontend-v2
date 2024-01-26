@@ -2,6 +2,7 @@
 
 import BreadCrumbComponent from "@/components/ui/BreadCrumb";
 import { DatePickerComponent } from "@/components/ui/DatePickerComponent";
+import PrivateRoute from "@/components/ui/PrivateRoute";
 import { TimePickerComponent } from "@/components/ui/TimePickerComponent";
 import dynamic from "next/dynamic";
 import { useForm } from "react-hook-form";
@@ -37,89 +38,91 @@ const CheckoutPage = () => {
   };
 
   return (
-    <div>
-      <BreadCrumbComponent title="Checkout" items={items} />
-      <form
-        className="mx-auto max-w-screen-xl px-4 py-5 lg:py-10 2xl:px-0"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <div className="grid-cols-3 gap-5 lg:grid">
-          <div className="col-span-2">
-            {/* Pickup Location */}
-            <div>
-              <h3 className="border-b bg-[#F1F1F1] px-3 py-2 text-lg tracking-wide">
-                Pickup Location
-              </h3>
+    <PrivateRoute>
+      <div>
+        <BreadCrumbComponent title="Checkout" items={items} />
+        <form
+          className="mx-auto max-w-screen-xl px-4 py-5 lg:py-10 2xl:px-0"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <div className="grid-cols-3 gap-5 lg:grid">
+            <div className="col-span-2">
+              {/* Pickup Location */}
+              <div>
+                <h3 className="border-b bg-[#F1F1F1] px-3 py-2 text-lg tracking-wide">
+                  Pickup Location
+                </h3>
 
-              <div className="my-5">
-                <PickupLocationForm register={register} errors={errors} />
+                <div className="my-5">
+                  <PickupLocationForm register={register} errors={errors} />
+                </div>
               </div>
-            </div>
-            {/* Pickup time and date */}
-            <div>
-              <h3 className="border-b bg-[#F1F1F1] px-3 py-2 text-lg tracking-wide">
-                Pickup Date and Time
-              </h3>
+              {/* Pickup time and date */}
+              <div>
+                <h3 className="border-b bg-[#F1F1F1] px-3 py-2 text-lg tracking-wide">
+                  Pickup Date and Time
+                </h3>
 
-              <div className="my-5 flex gap-5">
-                <div>
-                  <label className="block">Select Pickup Date</label>
+                <div className="my-5 flex gap-5">
                   <div>
-                    <DatePickerComponent
+                    <label className="block">Select Pickup Date</label>
+                    <div>
+                      <DatePickerComponent
+                        setValue={setValue}
+                        setError={setError}
+                        clearErrors={clearErrors}
+                      />
+                      {errors && errors?.date && (
+                        <div className="text-sm text-red-400">
+                          {(errors?.date?.message as String) ||
+                            "*Invalid Date Input"}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block">Select Pickup Time</label>
+                    <TimePickerComponent
                       setValue={setValue}
                       setError={setError}
                       clearErrors={clearErrors}
+                      getValues={getValues}
                     />
-                    {errors && errors?.date && (
+                    {errors && errors?.time && (
                       <div className="text-sm text-red-400">
-                        {(errors?.date?.message as String) ||
-                          "*Invalid Date Input"}
+                        {(errors?.time?.message as String) ||
+                          "*Invalid Time Input"}
                       </div>
                     )}
                   </div>
                 </div>
-                <div>
-                  <label className="block">Select Pickup Time</label>
-                  <TimePickerComponent
+              </div>
+
+              {/* Payment Method */}
+              <div>
+                <h3 className="border-b bg-[#F1F1F1] px-3 py-2 text-lg tracking-wide">
+                  Choose Payment Method
+                </h3>
+
+                <div className="my-5 flex gap-5">
+                  <ChoosePayment
                     setValue={setValue}
                     setError={setError}
                     clearErrors={clearErrors}
-                    getValues={getValues}
+                    errors={errors}
                   />
-                  {errors && errors?.time && (
-                    <div className="text-sm text-red-400">
-                      {(errors?.time?.message as String) ||
-                        "*Invalid Time Input"}
-                    </div>
-                  )}
                 </div>
               </div>
             </div>
 
-            {/* Payment Method */}
+            {/* Order Summary */}
             <div>
-              <h3 className="border-b bg-[#F1F1F1] px-3 py-2 text-lg tracking-wide">
-                Choose Payment Method
-              </h3>
-
-              <div className="my-5 flex gap-5">
-                <ChoosePayment
-                  setValue={setValue}
-                  setError={setError}
-                  clearErrors={clearErrors}
-                  errors={errors}
-                />
-              </div>
+              <CheckoutOrderSummary register={register} />
             </div>
           </div>
-
-          {/* Order Summary */}
-          <div>
-            <CheckoutOrderSummary />
-          </div>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
+    </PrivateRoute>
   );
 };
 
