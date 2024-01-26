@@ -5,12 +5,25 @@ import { decreaseQuantity, increaseQuantity } from "@/redux/features/cartSlice";
 import { TextInput, Textarea } from "keep-react";
 // import dynamic from "next/dynamic";
 import Image from "next/image";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
-const CheckoutOrderSummary = () => {
+const CheckoutOrderSummary = ({ register }: any) => {
   // hooks
   const dispatch = useAppDispatch();
+
+  const [isAgree, setIsAgree] = useState(false);
+
   // get cart items from redux store
   const { cart } = useAppSelector((state) => state.cart);
+
+  // calculate total price
+  const totalPrice = cart
+    ?.reduce(
+      (total: number, item: any) => total + item?.price * item?.quantity,
+      0,
+    )
+    .toFixed(2);
 
   return (
     <div className="space-y-4 bg-[#F5F5F5] p-5">
@@ -109,7 +122,11 @@ const CheckoutOrderSummary = () => {
               sizing="sm"
             />
           </div>
-          <button className="rounded-md border bg-[#F1F1F1] px-3 py-[5px]">
+          <button
+            className="rounded-md border bg-[#F1F1F1] px-3 py-[5px]"
+            type="button"
+            onClick={() => toast.error("Invalid Discount Code")}
+          >
             Apply
           </button>
         </div>
@@ -121,6 +138,7 @@ const CheckoutOrderSummary = () => {
             color="gray"
             border={true}
             rows={2}
+            {...register("note", { required: false })}
           />
         </div>
         <hr className="mt-2" />
@@ -130,7 +148,7 @@ const CheckoutOrderSummary = () => {
       <div className="space-y-1">
         <div className="flex justify-between">
           <p>Cart Subtotal</p>
-          <p>$50.00</p>
+          <p>${totalPrice}</p>
         </div>
         <div className="flex justify-between">
           <p>Discount</p>
@@ -138,19 +156,26 @@ const CheckoutOrderSummary = () => {
         </div>
         <div className="flex justify-between">
           <p>Order Total</p>
-          <p>$0.00</p>
+          <p>${totalPrice}</p>
         </div>
       </div>
       {/* Agree With Terms and Conditions */}
       <div className="flex items-center gap-3">
-        <input type="checkbox" name="terms" id="terms" />
+        <input
+          type="checkbox"
+          name="terms"
+          id="terms"
+          checked={isAgree}
+          onChange={() => setIsAgree(!isAgree)}
+        />
         <label htmlFor="terms">I agree with the terms and conditions</label>
       </div>
       {/* Place Order Button */}
       <div>
         <button
           type="submit"
-          className="font-xl w-full rounded-md border-2 border-[#52B765] bg-[#52B765] px-6 py-3 text-lg text-white transition-all duration-700 hover:bg-white hover:text-[#52B765] sm:mb-0"
+          className="font-xl hover:translate- w-full rounded-md border-2 border-[#52B765] bg-[#52B765] px-6 py-3 text-lg text-white transition-all   duration-700 disabled:cursor-not-allowed disabled:opacity-30 sm:mb-0"
+          disabled={cart?.length === 0 || !isAgree}
         >
           Place Order
         </button>

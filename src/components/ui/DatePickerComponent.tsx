@@ -45,7 +45,7 @@ export const DatePickerComponent = ({
     else {
       clearErrors("date");
     }
-  }, [date, setValue, setError, clearErrors]);
+  }, [date]);
 
   return (
     <DatePicker singleDatePicker={setDate}>
