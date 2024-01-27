@@ -10,8 +10,11 @@ const getHours = (time: string) => {
   // get the am or pm
   const amOrPm = time.split(":")[1].slice(-2);
   // if pm add 12 to the hour
-  if (amOrPm === "pm") {
+  if (amOrPm === "pm" && hour !== 12) {
     return hour + 12;
+  }
+  else if (amOrPm === "pm" && hour === 12) {
+    return hour;
   }
   // if am and hour is 12 set hour to 0
   else if (amOrPm === "am" && hour === 12) {
