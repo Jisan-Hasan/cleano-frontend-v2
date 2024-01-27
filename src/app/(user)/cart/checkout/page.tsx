@@ -4,6 +4,7 @@ import BreadCrumbComponent from "@/components/ui/BreadCrumb";
 import { DatePickerComponent } from "@/components/ui/DatePickerComponent";
 import PrivateRoute from "@/components/ui/PrivateRoute";
 import { TimePickerComponent } from "@/components/ui/TimePickerComponent";
+import { useAppSelector } from "@/redux/app/hooks";
 import dynamic from "next/dynamic";
 import { useForm } from "react-hook-form";
 import CheckoutOrderSummary from "./CheckoutOrderSummary";
@@ -33,8 +34,18 @@ const CheckoutPage = () => {
     getValues,
   } = useForm();
 
+  // get cart items from redux store
+  const { cart } = useAppSelector((state) => state.cart);
+
+  // iterate through cart items and get product ids and quantities
+  const services = cart?.map((item: any) => ({
+    id: item?.id,
+    quantity: item?.quantity,
+  }));
+
   const onSubmit = (data: any) => {
-    console.log(data);
+    const { paymentMethod, ...othersData } = data;
+    console.log({ pickup_details: othersData, services, paymentMethod });
   };
 
   return (

@@ -15,13 +15,13 @@ const PickupLocationForm = ({ register, errors }: any) => {
               sizing="md"
               addon={<IdentificationCard size={20} color="#5E718D" />}
               addonPosition="left"
-              {...register("firstName", {
+              {...register("first_name", {
                 required: "*First Name is required",
               })}
             />
-            {errors && errors?.firstName && (
+            {errors && errors?.first_name && (
               <span className="text-sm text-red-400">
-                {errors?.firstName?.message || "*Invalid First Name"}
+                {errors?.first_name?.message || "*Invalid First Name"}
               </span>
             )}
           </div>
@@ -32,11 +32,11 @@ const PickupLocationForm = ({ register, errors }: any) => {
               sizing="md"
               addon={<IdentificationCard size={20} color="#5E718D" />}
               addonPosition="left"
-              {...register("lastName", { required: "*Last Name is Required" })}
+              {...register("last_name", { required: "*Last Name is Required" })}
             />
-            {errors && errors?.lastName && (
+            {errors && errors?.last_name && (
               <span className="text-sm text-red-400">
-                {errors?.lastName?.message || "*Invalid Last Name"}
+                {errors?.last_name?.message || "*Invalid Last Name"}
               </span>
             )}
           </div>
