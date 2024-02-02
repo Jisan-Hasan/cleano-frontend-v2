@@ -5,6 +5,7 @@ import { decreaseQuantity, increaseQuantity } from "@/redux/features/cartSlice";
 import { TextInput, Textarea } from "keep-react";
 // import dynamic from "next/dynamic";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -28,11 +29,21 @@ const CheckoutOrderSummary = ({ register }: any) => {
   return (
     <div className="space-y-4 bg-[#F5F5F5] p-5">
       <div>
-        <h2 className="text-xl font-medium">Order Summary</h2>
+        <div className="flex items-center justify-between">
+          <h2 className="text-xl font-medium">Order Summary</h2>
+          <Link href="/services" className="px-3 py-2 hover:text-[#51B765]">
+            Add Service
+          </Link>
+        </div>
         <hr className="mt-1" />
       </div>
       {/* Services */}
       <div>
+        {cart?.length === 0 && (
+          <div className="flex items-center justify-center">
+            <p className="text-lg text-gray-500">No service in cart</p>
+          </div>
+        )}
         {cart?.map((item: any, index: number) => (
           <div key={index}>
             <div className="flex items-center gap-3">

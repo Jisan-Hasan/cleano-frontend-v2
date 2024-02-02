@@ -4,9 +4,12 @@ import BreadCrumbComponent from "@/components/ui/BreadCrumb";
 import { DatePickerComponent } from "@/components/ui/DatePickerComponent";
 import PrivateRoute from "@/components/ui/PrivateRoute";
 import { TimePickerComponent } from "@/components/ui/TimePickerComponent";
+import { usePlaceOrderMutation } from "@/redux/api/orderApi";
 import { useAppSelector } from "@/redux/app/hooks";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import CheckoutOrderSummary from "./CheckoutOrderSummary";
 import { ChoosePayment } from "./ChoosePayment";
 import PickupLocationForm from "./PickupLocationForm";
@@ -23,6 +26,10 @@ const items = [
 ];
 
 const CheckoutPage = () => {
+  // hooks
+  const router = useRouter();
+
+  // react hook form
   const {
     handleSubmit,
     register,
@@ -43,9 +50,50 @@ const CheckoutPage = () => {
     quantity: item?.quantity,
   }));
 
-  const onSubmit = (data: any) => {
+  // place order mutation hook
+  const [
+    placeOrder,
+    {
+      data: placeOrderData,
+      isLoading: isPlaceOrderLoading,
+      isError: isPlaceOrderError,
+      error: placeOrderError,
+      isSuccess: isPlaceOrderSuccess,
+    },
+  ] = usePlaceOrderMutation();
+
+  const onSubmit = async (data: any) => {
     const { paymentMethod, ...othersData } = data;
-    console.log({ pickup_details: othersData, services, paymentMethod });
+    // console.log({ pickup_details: othersData, services, paymentMethod });
+
+    // check if cart is empty
+    if (!services.length) {
+      toast.error("Cart is empty");
+      return;
+    }
+
+    // check if payment method is selected
+    if (!paymentMethod) {
+      toast.error("Please select a payment method");
+      return;
+    }
+
+    await placeOrder({
+      pickup_details: othersData,
+      services,
+      paymentMethod,
+    })
+      .unwrap()
+      .then((res) => {
+        // console.log(res);
+
+        if (paymentMethod === "cash") {
+          toast.success("Order placed successfully");
+          router.push("/account/orders");
+        } else if (paymentMethod === "card") {
+          toast.success("Order placed successfully");
+        }
+      });
   };
 
   return (
