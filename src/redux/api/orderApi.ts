@@ -13,7 +13,15 @@ export const orderApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagType.order],
     }),
+
+    getUserOrders: build.query({
+      query: ({ page = 1, limit = 5 }) => ({
+        url: `${ORDER_URL}/get-orders/user?page=${page}&limit=${limit}`,
+        method: "GET",
+      }),
+      providesTags: [tagType.order],
+    }),
   }),
 });
 
-export const { usePlaceOrderMutation } = orderApi;
+export const { usePlaceOrderMutation, useGetUserOrdersQuery } = orderApi;
