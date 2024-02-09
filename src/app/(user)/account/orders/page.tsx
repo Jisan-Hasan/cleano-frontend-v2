@@ -8,6 +8,7 @@ import { Table } from "keep-react";
 import { ArrowsDownUp, Eye } from "phosphor-react";
 import { useState } from "react";
 import MyAccountSidebar from "../MyAccountSidebar";
+import { useRouter } from "next/navigation";
 
 const items = [
   {
@@ -24,10 +25,14 @@ const MyOrderPage = () => {
   // local state
   const [currentPage, setCurrentPage] = useState(1);
 
+  const router = useRouter();
+
+  const limit = 5;
   // get user orders query
-  const {
-    data: orderDataResponse,
-  } = useGetUserOrdersQuery({ page: currentPage, limit: 5 });
+  const { data: orderDataResponse } = useGetUserOrdersQuery({
+    page: currentPage,
+    limit: limit,
+  });
 
   // destructure response
   const { data: ordersData, meta } = orderDataResponse || {};
@@ -49,6 +54,11 @@ const MyOrderPage = () => {
               <div className="space-y-4  border px-5 py-3">
                 <Table showCheckbox={false}>
                   <Table.Head>
+                    <Table.HeadCell>
+                      <p className="text-body-6 text-metal-400 font-medium">
+                        Serial #
+                      </p>
+                    </Table.HeadCell>
                     <Table.HeadCell className="">
                       <p className="text-body-6 text-metal-400 font-medium">
                         Order #
@@ -78,8 +88,11 @@ const MyOrderPage = () => {
                     <Table.HeadCell className="">Action</Table.HeadCell>
                   </Table.Head>
                   <Table.Body className="divide-y divide-gray-25">
-                    {ordersData?.map((order: any) => (
-                      <Table.Row className="bg-white" key={order?.id}>
+                    {ordersData?.map((order: any, index: number) => (
+                      <Table.Row className="bg-white" key={index}>
+                        <Table.Cell>
+                          <div>{limit * (currentPage - 1) + (index + 1)}</div>
+                        </Table.Cell>
                         <Table.Cell>
                           <div>{order?.orderNumber}</div>
                         </Table.Cell>
@@ -115,7 +128,7 @@ const MyOrderPage = () => {
 
                         <Table.Cell>
                           <span title="View Order" className="cursor-pointer">
-                            <Eye size={20} color="gray" />
+                            <Eye size={20} color="gray" onClick={() => router.push(`/account/orders/view/${order?.id}`)} />
                           </span>
                         </Table.Cell>
                       </Table.Row>
