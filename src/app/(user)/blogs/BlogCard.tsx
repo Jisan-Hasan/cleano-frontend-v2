@@ -11,6 +11,7 @@ const BlogCard = ({
   postTime = "30 Aug 2023",
   title = "",
   description = "",
+  path = "/blogs",
 }: any) => {
   const { push } = useRouter();
   return (
@@ -18,11 +19,7 @@ const BlogCard = ({
       className="max-w-sm overflow-hidden rounded-md"
       imgSrc={blogCardImage.src}
       imgSize="md"
-      onClick={() =>
-        push(
-          "/blogs/the-ultimate-guide-to-maintaining-a-clean-and-healthy-home",
-        )
-      }
+      onClick={() => push(`${path}`)}
     >
       <Card.Container className="bg-metal-50/50 absolute left-3.5 top-3.5 cursor-pointer items-center justify-center rounded-full">
         <Badge size="xs" colorType="light" color="error">

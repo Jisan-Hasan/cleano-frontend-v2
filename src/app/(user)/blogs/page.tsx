@@ -35,6 +35,9 @@ const BlogsPage = () => {
             description={
               "In today’s fast-paced world, maintaining a clean and healthy home can sometimes feel like a daunting task. However, a clean environment not only makes your home more pleasant but also contributes significantly to your physical and mental well-being. At Cleano, we are committed to helping you achieve a pristine home with ease. In this guide, we’ll share practical cleaning tips, the importance of hygiene, and how a clean space can enhance your health."
             }
+            path={
+              "/blogs/the-ultimate-guide-to-maintaining-a-clean-and-healthy-home"
+            }
           />
         </div>
         <div className="my-8 flex justify-center">
